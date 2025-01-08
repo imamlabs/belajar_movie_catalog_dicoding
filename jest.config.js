@@ -5,8 +5,12 @@
 
 /** @type {import('jest').Config} */
 const config = {
+  rootDir: ".",
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/tests/setupTests.js"],
   setupFiles: ["fake-indexeddb/auto"],
   testEnvironment: "jsdom",
+  testMatch: ["<rootDir>/tests/*.test.js?(x)", "<rootDir>/tests/*.spec.js?(x)"],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
