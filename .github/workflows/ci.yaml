@@ -1,15 +1,27 @@
-
-strategy:
-      matrix:
-        node-version: [14.x]
- 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Run Automated Test
-        run: |
-          npm install
-          npm run test
+name: CI  
+  
+on:  
+  push:  
+    branches:  
+      - main  
+  pull_request:  
+    branches:  
+      - main  
+  
+jobs:  
+  build:  
+    strategy:  
+      matrix:  
+        node-version: [14.x]  # Versi Node.js yang ingin Anda gunakan  
+    runs-on: ubuntu-latest  
+  
+    steps:  
+      - uses: actions/checkout@v3  
+      - name: Use Node.js ${{ matrix.node-version }}  
+        uses: actions/setup-node@v3  
+        with:  
+          node-version: ${{ matrix.node-version }}  
+      - name: Run Automated Test  
+        run: |  
+          npm install  
+          npm run test  
